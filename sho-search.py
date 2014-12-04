@@ -4,6 +4,9 @@
 
 from shodan import WebAPI
 import sys
+import datetime
+
+uniqdt = datetime.datetime.utcnow().strftime("%Y-%m-%d-%H%M")
 
 #Define your key here
 SHODAN_API_KEY = ""
@@ -21,8 +24,7 @@ class fileout(object):
             self.terminal.write(message)
             self.log.write(message)
 
-sys.stdout = fileout("shosearch.txt")
-
+sys.stdout = fileout("shosearch" + uniqdt + ".txt")
 
 try:
 		results = api.search(userdef)
